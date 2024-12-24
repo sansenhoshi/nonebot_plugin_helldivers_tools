@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nonebot_plugin_helldivers_tools"
-version = "0.0.1"
+version = "0.1.0"
 description = "NoneBot2 绝地潜兵助手"
 readme = "README.md"
 packages = [{include = "nonebot_plugin_helldivers_tools"}]

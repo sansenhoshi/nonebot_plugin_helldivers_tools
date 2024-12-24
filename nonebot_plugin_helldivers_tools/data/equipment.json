@@ -180,8 +180,8 @@
     "backpack": 1
   },
   {
-    "name": "EXO-45 爱国者装甲者）",
-    "path": "img/helldivers/EXO-45 爱国者装甲者.png",
+    "name": "EXO-45 爱国者外骨骼装甲）",
+    "path": "img/helldivers/EXO-45 爱国者外骨骼装甲.png",
     "type": "blue",
     "backpack": 0
   },
@@ -306,8 +306,8 @@
     "backpack": 1
   },
   {
-    "name": "EXO-49 解放者装甲",
-    "path": "img/helldivers/EXO-49 解放者装甲.png",
+    "name": "EXO-49 解放者外骨骼装甲",
+    "path": "img/helldivers/EXO-49 解放者外骨骼装甲.png",
     "type": "blue",
     "backpack": 0
   },
