@@ -7,6 +7,7 @@ import io
 import json
 import os
 import re
+from nonebot import logger
 from io import BytesIO
 from datetime import datetime
 from PIL import Image, ImageOps, ImageDraw, ImageFont
@@ -35,6 +36,7 @@ basic_path = os.path.dirname(__file__)
 save_path = os.path.join(basic_path, "temp")
 img_path = os.path.join(basic_path, "img")
 data_path = os.path.join(basic_path, "data")
+
 
 war_situation = on_command("简报", aliases={"简报"})
 
@@ -68,88 +70,157 @@ async def download_url(url: str) -> bytes:
                 print(f"Error downloading {url}, retry {i}/3: {str(e)}")
 
 
-random_helldivers = on_command("随机战备", aliases={"随机战备"})
+random_helldivers = on_command("随机战备", aliases={"随机战备"}, block=True)
 
+PROMPT = """     ***超级地球武装部***
+   请发送你需要的随机规则
+   
+1：纯随机（不推荐）
 
-@random_helldivers.got("pick_type", prompt="请发送你需要的随机规则\n1：纯随机\n2：套路随机(按一定规则随机)")
-async def got_random_helldivers(ev: MessageEvent, pick_type: str = ArgPlainText()):
+   套路随机(按一定规则随机)
+   
+2：2红/1蓝/1绿
+3：2绿/1红/1蓝
+4：2蓝/1绿/1红
+
+5：3红/1蓝
+6：3绿/1蓝
+
+7：2红/2蓝
+8：2蓝/2绿
+9：2绿/2红
+
+10：4红
+11：4绿"""
+
+@random_helldivers.got("pick_type", prompt=PROMPT)
+
+# 用户选择
+async def got_random_helldivers(event: MessageEvent, pick_type: str = ArgPlainText()):
+    logger.info(f"用户选择的战备类型: {pick_type}")
     if not is_number(pick_type):
-        await random_helldivers.reject(f"您输入的 {pick_type} 非数字，请重新输入1或者2，或者输入0退出")
-    elif int(pick_type) not in [0, 1, 2]:
-        await random_helldivers.reject(f"您输入的 {pick_type} 不在范围内，请重新输入1或者2，或者输入0退出")
+        await random_helldivers.reject(f"您输入的 {pick_type} 非数字，请重新输入1到11，或者输入0退出")
+    elif int(pick_type) not in range(12):
+        await random_helldivers.reject(f"您输入的 {pick_type} 不在范围内，请重新输入1到11，或者输入0退出")
     elif int(pick_type) == 0:
+        logger.info("用户选择退出随机战备")
         return
-    elif int(pick_type) == 1:
-        result = await get_random_equipment()
-        MessageSegment.text("您的随机结果是是：\n")
-        final_msg = (MessageSegment.text("您的随机结果是是：\n"),)
-        img_base_str = pic2b64(Image.open(result))
-        image_turple = MessageSegment.image(img_base_str)
-        final_msg += image_turple
-        mix_msg = (MessageSegment.reply(ev.message_id),)
-        mix_msg += final_msg
-        await random_helldivers.finish(mix_msg)
-    elif int(pick_type) == 2:
-        mix_msg = (MessageSegment.reply(ev.message_id), "开发中，请民主的等待",)
-        await random_helldivers.finish(mix_msg)
 
+    mix_msg = (MessageSegment.reply(event.message_id),)
 
-async def get_random_equipment():
+    type_combinations = {
+        2: {'red': 2, 'blue': 1, 'green': 1},
+        3: {'green': 2, 'red': 1, 'blue': 1},
+        4: {'blue': 2, 'green': 1, 'red': 1},
+        5: {'red': 3, 'blue': 1},
+        6: {'green': 3, 'blue': 1},
+        7: {'red': 2, 'blue': 2},
+        8: {'blue': 2, 'green': 2},
+        9: {'green': 2, 'red': 2},
+        10: {'red': 4},
+        11: {'green': 4}
+    }
+
+    if int(pick_type) == 1:
+        logger.info("用户选择纯随机战备")
+        result = await get_random_equipment(4)  # 4 random equipments
+    else:
+        combination = type_combinations.get(int(pick_type))
+        logger.info(f"用户选择的战备组合: {combination}")
+        result = await get_equipment_by_combination(combination)
+
+    final_msg = MessageSegment.text("您的随机结果是：\n")
+    img_base_str = pic2b64(Image.open(result))
+    image_turple = MessageSegment.image(img_base_str)
+    mix_msg += (final_msg, image_turple)
+
+    await random_helldivers.finish(mix_msg)
+
+async def get_random_equipment(count):
     data_config = os.path.join(basic_path, "data")
     with open(data_config + "/equipment.json", "r", encoding="utf-8") as file:
         data = json.load(file)
 
-    max_equipment = len(data)
-    need_equipment = set()  # 初始化一个集合来存储已经生成的数字
-    anchor_point = 114514
+    indices = select_random_equipment(len(data), count)
+    selected_equipment = [data[i] for i in indices]
 
-    for i in range(4):
-        while True:  # 循环直到生成不重复的随机数
-            index = random.randint(0, max_equipment - 1)
-            if index != anchor_point and index not in need_equipment:
-                break  # 当生成的随机数不重复时，退出循环
-        need_equipment.add(index)  # 将新生成的随机数添加到集合中
-        anchor_point = index
-    # 1.创建板块
+    return create_image(selected_equipment)
+
+async def get_equipment_by_combination(type_combination):
+    data_config = os.path.join(basic_path, "data")
+    with open(data_config + "/equipment.json", "r", encoding="utf-8") as file:
+        data = json.load(file)
+
+    equipment_by_type = categorize_equipment_by_type(data)
+    selected_equipment = select_equipment_by_type(equipment_by_type, type_combination)
+
+    logger.debug(f"根据组合选择的装备: {selected_equipment}")
+    return create_image(selected_equipment)
+
+def categorize_equipment_by_type(data):
+    equipment_by_type = {}
+    for item in data:
+        equip_type = item['type']
+        if equip_type not in equipment_by_type:
+            equipment_by_type[equip_type] = []
+        equipment_by_type[equip_type].append(item)
+    return equipment_by_type
+
+def select_equipment_by_type(equipment_by_type, type_combination):
+    selected_equipment = []
+    backpack_count = 0
+
+    for equip_type, count in type_combination.items():
+        if equip_type in equipment_by_type:
+            available_items = equipment_by_type[equip_type]
+            random.shuffle(available_items)
+            selected = 0
+            for item in available_items:
+                if selected < count:
+                    if item['backpack'] == 1 and backpack_count >= 1:
+                        continue
+                    selected_equipment.append(item)
+                    selected += 1
+                    if item['backpack'] == 1:
+                        backpack_count += 1
+                else:
+                    break
+
+    return selected_equipment
+
+def select_random_equipment(max_equipment, count):
+    return random.sample(range(max_equipment), count)
+
+def create_image(selected_equipment):
     new_img = Image.new('RGBA', (800, 500), (0, 0, 0, 1000))
     logo_path = img_path + "/super earth.png"
     logo = Image.open(logo_path)
     new_img = image_paste(logo, new_img, (682, 20))
     draw = ImageDraw.Draw(new_img)
-    # 2.装载字体
     ch_text_font = ImageFont.truetype(data_path + '/font/msyh.ttc', 36)
     pos_horizon = 20
-    for equipment in need_equipment:
-        name = data[equipment]['name']
-        path = basic_path + "/" + data[equipment]['path'].replace("\\", "/")
+
+    for equipment in selected_equipment:
+        name = equipment['name']
+        path = basic_path + "/" + equipment['path'].replace("\\", "/")
         icon = Image.open(path)
         icon = icon.resize((100, 100))
         new_img = image_paste(icon, new_img, (20, pos_horizon))
         draw.text((140, pos_horizon + 5), '战备名称：', fill='white', font=ch_text_font)
         draw.text((140, pos_horizon + 50), f'{name}', fill='white', font=ch_text_font)
         pos_horizon += 120
+
     b_io = BytesIO()
     new_img = ImageOps.expand(new_img, border=10, fill="white")
     new_img.save(b_io, format="PNG")
     return b_io
 
-
-# 图片粘贴
 def image_paste(paste_image, under_image, pos):
-    """
-    :param paste_image: 需要粘贴的图片
-    :param under_image: 底图
-    :param pos: 位置（x,y）坐标
-    :return: 返回图片
-    """
     if paste_image.mode == 'RGBA':
-        # 如果有 alpha 通道，则使用 paste() 方法进行粘贴，并将 alpha 通道作为 mask 参数传递
         under_image.paste(paste_image, pos, mask=paste_image.split()[3])
     else:
-        # 如果没有 alpha 通道，则直接进行粘贴
         under_image.paste(paste_image, pos)
     return under_image
-
 
 def is_number(s):
     return bool(re.match(r'^[0-9]+$', s))
