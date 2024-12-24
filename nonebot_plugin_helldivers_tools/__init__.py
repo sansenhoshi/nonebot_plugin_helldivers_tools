@@ -27,9 +27,7 @@ __plugin_meta__ = PluginMetadata(
     usage="简报：获取星系战争简要概况\n"
           "随机战备：让机器人帮你随机一套战备",
     type="application",
-    extra={
-
-    }
+    homepage="https://github.com/sansenhoshi/nonebot_plugin_helldivers_tools"
 )
 
 basic_path = os.path.dirname(__file__)
