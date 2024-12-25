@@ -10,13 +10,13 @@
 ## 开始使用
 
 - 在 nonebot2 项目的根目录下打开命令行, 输入以下指令即可安装
-
-    nb plugin install nonebot-plugin-helldivers-tools
-    
+```
+nb plugin install nonebot-plugin-helldivers-tools
+```
 - 使用包管理器安装
-
-    pip install nonebot-plugin-helldivers-tools
-
+```
+pip install nonebot-plugin-helldivers-tools
+```
 
 ## 触发指令
 
