@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "NoneBot2 绝地潜兵助手"
 readme = "README.md"
 packages = [{include = "nonebot_plugin_helldivers_tools"}]
+authors = ["sansenhoshi"]
 repository = "https://github.com/sansenhoshi/nonebot_plugin_helldivers_tools"
 keywords = ["nonebot2", "helldivers"]
 
