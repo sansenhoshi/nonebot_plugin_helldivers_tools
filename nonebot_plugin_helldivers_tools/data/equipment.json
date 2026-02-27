@@ -1,51 +1,9 @@
 [
   {
-    "name": "A-G-16 加特林哨戒炮",
-    "path": "img/helldivers/A-G-16 加特林哨戒炮.png",
-    "type": "green",
-    "backpack": 0
-  },
-  {
-    "name": "A-M-23 电磁冲击波迫击哨戒炮",
-    "path": "img/helldivers/A-M-23 电磁冲击波迫击哨戒炮.png",
-    "type": "green",
-    "backpack": 0
-  },
-  {
-    "name": "A-MG-43 哨戒机枪",
-    "path": "img/helldivers/A-MG-43 哨戒机枪.png",
-    "type": "green",
-    "backpack": 0
-  },
-  {
-    "name": "A-MLS-4X 火箭哨戒炮",
-    "path": "img/helldivers/A-MLS-4X 火箭哨戒炮.png",
-    "type": "green",
-    "backpack": 0
-  },
-  {
-    "name": "AAC-8 自动哨戒炮",
-    "path": "img/helldivers/AAC-8 自动哨戒炮.png",
-    "type": "green",
-    "backpack": 0
-  },
-  {
-    "name": "AARC-3 特斯拉塔",
-    "path": "img/helldivers/AARC-3 特斯拉塔.png",
-    "type": "green",
-    "backpack": 0
-  },
-  {
     "name": "AC-8 机炮",
     "path": "img/helldivers/AC-8 机炮.png",
     "type": "blue",
     "backpack": 1
-  },
-  {
-    "name": "AM-12 迫击哨戒炮",
-    "path": "img/helldivers/AM-12 迫击哨戒炮.png",
-    "type": "green",
-    "backpack": 0
   },
   {
     "name": "APW-1 反器材步枪",
@@ -60,16 +18,88 @@
     "backpack": 0
   },
   {
-    "name": "AX-AR-3 护卫犬",
-    "path": "img/helldivers/AX-AR-3 护卫犬.png",
+    "name": "AX-LAS-5 漫游车",
+    "path": "img/helldivers/AX-LAS-5 漫游车.png",
     "type": "blue",
     "backpack": 1
   },
   {
-    "name": "AX-LAS-5 护卫犬漫游车",
-    "path": "img/helldivers/AX-LAS-5 护卫犬漫游车.png",
+    "name": "AX·AR-23 护卫犬",
+    "path": "img/helldivers/AX·AR-23 护卫犬.png",
     "type": "blue",
     "backpack": 1
+  },
+  {
+    "name": "AX·ARC-3 K-9",
+    "path": "img/helldivers/AX·ARC-3 K-9.png",
+    "type": "blue",
+    "backpack": 1
+  },
+  {
+    "name": "AX·FLAM-75 热狗",
+    "path": "img/helldivers/AX·FLAM-75 热狗.png",
+    "type": "blue",
+    "backpack": 1
+  },
+  {
+    "name": "AX·TX-13 腐息",
+    "path": "img/helldivers/AX·TX-13 腐息.png",
+    "type": "blue",
+    "backpack": 1
+  },
+  {
+    "name": "A·AC-8 自动哨戒炮",
+    "path": "img/helldivers/A·AC-8 自动哨戒炮.png",
+    "type": "green",
+    "backpack": 0
+  },
+  {
+    "name": "A·ARC-3 特斯拉塔",
+    "path": "img/helldivers/A·ARC-3 特斯拉塔.png",
+    "type": "green",
+    "backpack": 0
+  },
+  {
+    "name": "A·FLAM-40 火焰喷射哨戒炮",
+    "path": "img/helldivers/A·FLAM-40 火焰喷射哨戒炮.png",
+    "type": "green",
+    "backpack": 0
+  },
+  {
+    "name": "A·G-16 加特林哨戒炮",
+    "path": "img/helldivers/A·G-16 加特林哨戒炮.png",
+    "type": "green",
+    "backpack": 0
+  },
+  {
+    "name": "A·LAS-98 激光哨戒炮",
+    "path": "img/helldivers/A·LAS-98 激光哨戒炮.png",
+    "type": "green",
+    "backpack": 0
+  },
+  {
+    "name": "A·M-12 迫击哨戒炮",
+    "path": "img/helldivers/A·M-12 迫击哨戒炮.png",
+    "type": "green",
+    "backpack": 0
+  },
+  {
+    "name": "A·M-23 电磁冲击波迫击哨戒炮",
+    "path": "img/helldivers/A·M-23 电磁冲击波迫击哨戒炮.png",
+    "type": "green",
+    "backpack": 0
+  },
+  {
+    "name": "A·MG-43 哨戒机枪",
+    "path": "img/helldivers/A·MG-43 哨戒机枪.png",
+    "type": "green",
+    "backpack": 0
+  },
+  {
+    "name": "A·MLS-X 火箭哨戒炮",
+    "path": "img/helldivers/A·MLS-X 火箭哨戒炮.png",
+    "type": "green",
+    "backpack": 0
   },
   {
     "name": "B-1 补给背包",
@@ -78,15 +108,81 @@
     "backpack": 1
   },
   {
-    "name": "E-MG-101 重机枪部署支架",
-    "path": "img/helldivers/E-MG-101 重机枪部署支架.png",
-    "type": "green",
+    "name": "B-100 便携式地狱火炸弹",
+    "path": "img/helldivers/B-100 便携式地狱火炸弹.png",
+    "type": "blue",
+    "backpack": 1
+  },
+  {
+    "name": "B·MD C4背包",
+    "path": "img/helldivers/B·MD C4背包.png",
+    "type": "blue",
+    "backpack": 1
+  },
+  {
+    "name": "CQC-1 唯一真旗",
+    "path": "img/helldivers/CQC-1 唯一真旗.png",
+    "type": "blue",
+    "backpack": 0
+  },
+  {
+    "name": "CQC-20 破门锤",
+    "path": "img/helldivers/CQC-20 破门锤.png",
+    "type": "blue",
+    "backpack": 0
+  },
+  {
+    "name": "CQC-9 除叶工具",
+    "path": "img/helldivers/CQC-9 除叶工具.png",
+    "type": "blue",
     "backpack": 0
   },
   {
     "name": "EAT-17 消耗性反坦克武器",
     "path": "img/helldivers/EAT-17 消耗性反坦克武器.png",
     "type": "blue",
+    "backpack": 0
+  },
+  {
+    "name": "EAT-411 荡平者",
+    "path": "img/helldivers/EAT-411 荡平者.png",
+    "type": "blue",
+    "backpack": 0
+  },
+  {
+    "name": "EAT-700 消耗性凝固汽油弹",
+    "path": "img/helldivers/EAT-700 消耗性凝固汽油弹.png",
+    "type": "blue",
+    "backpack": 0
+  },
+  {
+    "name": "EXO-45 爱国者外骨骼机甲",
+    "path": "img/helldivers/EXO-45 爱国者外骨骼机甲.png",
+    "type": "blue",
+    "backpack": 0
+  },
+  {
+    "name": "EXO-49 解放者外骨骼机甲",
+    "path": "img/helldivers/EXO-49 解放者外骨骼机甲.png",
+    "type": "blue",
+    "backpack": 0
+  },
+  {
+    "name": "E·AT-12 反坦克炮台",
+    "path": "img/helldivers/E·AT-12 反坦克炮台.png",
+    "type": "green",
+    "backpack": 0
+  },
+  {
+    "name": "E·GL-21 掷弹兵防卫墙",
+    "path": "img/helldivers/E·GL-21 掷弹兵防卫墙.png",
+    "type": "green",
+    "backpack": 0
+  },
+  {
+    "name": "E·MG-101 重机枪部署支架",
+    "path": "img/helldivers/E·MG-101 重机枪部署支架.png",
+    "type": "green",
     "backpack": 0
   },
   {
@@ -114,8 +210,20 @@
     "backpack": 0
   },
   {
-    "name": "GR-8 无后座力炮",
-    "path": "img/helldivers/GR-8 无后座力炮.png",
+    "name": "GL-28 弹链式榴弹发射器",
+    "path": "img/helldivers/GL-28 弹链式榴弹发射器.png",
+    "type": "blue",
+    "backpack": 1
+  },
+  {
+    "name": "GL-52 缓和使者",
+    "path": "img/helldivers/GL-52 缓和使者.png",
+    "type": "blue",
+    "backpack": 0
+  },
+  {
+    "name": "GR-8 无后坐力炮",
+    "path": "img/helldivers/GR-8 无后坐力炮.png",
     "type": "blue",
     "backpack": 1
   },
@@ -132,10 +240,28 @@
     "backpack": 0
   },
   {
+    "name": "LIFT-182 传送背包",
+    "path": "img/helldivers/LIFT-182 传送背包.png",
+    "type": "blue",
+    "backpack": 1
+  },
+  {
     "name": "LIFT-850 喷射背包",
     "path": "img/helldivers/LIFT-850 喷射背包.png",
     "type": "blue",
     "backpack": 1
+  },
+  {
+    "name": "LIFT-860 悬浮背包",
+    "path": "img/helldivers/LIFT-860 悬浮背包.png",
+    "type": "blue",
+    "backpack": 1
+  },
+  {
+    "name": "M-102 快速侦察载具",
+    "path": "img/helldivers/M-102 快速侦察载具.png",
+    "type": "blue",
+    "backpack": 0
   },
   {
     "name": "M-105 盟友",
@@ -144,8 +270,8 @@
     "backpack": 0
   },
   {
-    "name": "MD-14 燃烧地雷",
-    "path": "img/helldivers/MD-14 燃烧地雷.png",
+    "name": "MD-17 反坦克地雷",
+    "path": "img/helldivers/MD-17 反坦克地雷.png",
     "type": "green",
     "backpack": 0
   },
@@ -156,14 +282,62 @@
     "backpack": 0
   },
   {
+    "name": "MD-8 毒气地雷",
+    "path": "img/helldivers/MD-8 毒气地雷.png",
+    "type": "green",
+    "backpack": 0
+  },
+  {
+    "name": "MD-I4 燃烧地雷",
+    "path": "img/helldivers/MD-I4 燃烧地雷.png",
+    "type": "green",
+    "backpack": 0
+  },
+  {
+    "name": "MG-206 重机枪",
+    "path": "img/helldivers/MG-206 重机枪.png",
+    "type": "blue",
+    "backpack": 0
+  },
+  {
     "name": "MG-43 机枪",
     "path": "img/helldivers/MG-43 机枪.png",
     "type": "blue",
     "backpack": 0
   },
   {
+    "name": "MLS-4X 突击兵",
+    "path": "img/helldivers/MLS-4X 突击兵.png",
+    "type": "blue",
+    "backpack": 0
+  },
+  {
+    "name": "MS-11 单兵导弹发射井",
+    "path": "img/helldivers/MS-11 单兵导弹发射井.png",
+    "type": "blue",
+    "backpack": 0
+  },
+  {
+    "name": "PLAS-45 纪元",
+    "path": "img/helldivers/PLAS-45 纪元.png",
+    "type": "blue",
+    "backpack": 0
+  },
+  {
+    "name": "RL-77 空爆火箭弹发射器",
+    "path": "img/helldivers/RL-77 空爆火箭弹发射器.png",
+    "type": "blue",
+    "backpack": 1
+  },
+  {
     "name": "RS-422 磁轨炮",
     "path": "img/helldivers/RS-422 磁轨炮.png",
+    "type": "blue",
+    "backpack": 0
+  },
+  {
+    "name": "S-11 矛枪",
+    "path": "img/helldivers/S-11 矛枪.png",
     "type": "blue",
     "backpack": 0
   },
@@ -180,8 +354,26 @@
     "backpack": 1
   },
   {
-    "name": "EXO-45 爱国者外骨骼装甲",
-    "path": "img/helldivers/EXO-45 爱国者外骨骼装甲.png",
+    "name": "SH-51 定向护盾",
+    "path": "img/helldivers/SH-51 定向护盾.png",
+    "type": "blue",
+    "backpack": 1
+  },
+  {
+    "name": "StA-X3 W.A.S.P.发射器",
+    "path": "img/helldivers/StA-X3 W.A.S.P.发射器.png",
+    "type": "blue",
+    "backpack": 1
+  },
+  {
+    "name": "TD-220 堡垒MK XVI",
+    "path": "img/helldivers/TD-220 堡垒MK XVI.png",
+    "type": "blue",
+    "backpack": 0
+  },
+  {
+    "name": "TX-41 灭菌器",
+    "path": "img/helldivers/TX-41 灭菌器.png",
     "type": "blue",
     "backpack": 0
   },
@@ -198,8 +390,20 @@
     "backpack": 0
   },
   {
+    "name": "轨道凝固汽油弹火力网",
+    "path": "img/helldivers/轨道凝固汽油弹火力网.png",
+    "type": "red",
+    "backpack": 0
+  },
+  {
     "name": "轨道加特林火力网",
     "path": "img/helldivers/轨道加特林火力网.png",
+    "type": "red",
+    "backpack": 0
+  },
+  {
+    "name": "轨道厌恶攻击",
+    "path": "img/helldivers/轨道厌恶攻击.png",
     "type": "red",
     "backpack": 0
   },
@@ -228,18 +432,6 @@
     "backpack": 0
   },
   {
-    "name": "轨道炮精准攻击",
-    "path": "img/helldivers/轨道炮精准攻击.png",
-    "type": "red",
-    "backpack": 0
-  },
-  {
-    "name": "轨道烟雾攻击",
-    "path": "img/helldivers/轨道烟雾攻击.png",
-    "type": "red",
-    "backpack": 0
-  },
-  {
     "name": "轨道电磁冲击波攻击",
     "path": "img/helldivers/轨道电磁冲击波攻击.png",
     "type": "red",
@@ -252,9 +444,9 @@
     "backpack": 0
   },
   {
-    "name": "重机枪",
-    "path": "img/helldivers/重机枪.png",
-    "type": "bule",
+    "name": "轨道精准攻击",
+    "path": "img/helldivers/轨道精准攻击.png",
+    "type": "red",
     "backpack": 0
   },
   {
@@ -266,12 +458,6 @@
   {
     "name": "飞鹰500KG炸弹",
     "path": "img/helldivers/飞鹰500KG炸弹.png",
-    "type": "red",
-    "backpack": 0
-  },
-  {
-    "name": "飞鹰凝固汽油弹空袭",
-    "path": "img/helldivers/飞鹰凝固汽油弹空袭.png",
     "type": "red",
     "backpack": 0
   },
@@ -298,77 +484,5 @@
     "path": "img/helldivers/飞鹰集束炸弹.png",
     "type": "red",
     "backpack": 0
-  },
-  {
-    "name": "AX-TX-13 护卫犬腐息",
-    "path": "img/helldivers/AX-TX-13 护卫犬腐息.png",
-    "type": "blue",
-    "backpack": 1
-  },
-  {
-    "name": "EXO-49 解放者外骨骼装甲",
-    "path": "img/helldivers/EXO-49 解放者外骨骼装甲.png",
-    "type": "blue",
-    "backpack": 0
-  },
-  {
-    "name": "TX-41 灭菌器",
-    "path": "img/helldivers/TX-41 灭菌器.png",
-    "type": "blue",
-    "backpack": 0
-  },
-  {
-    "name": "轨道燃烧火力网",
-    "path": "img/helldivers/轨道燃烧火力网.png",
-    "type": "red",
-    "backpack": 0
-  },
-  {
-    "name": "MD-17 反坦克地雷",
-    "path": "img/helldivers/MD-17 反坦克地雷.png",
-    "type": "green",
-    "backpack": 0
-  },
-  {
-    "name": "MLS-4X 突击兵",
-    "path": "img/helldivers/MLS-4X 突击兵.png",
-    "type": "blue",
-    "backpack": 0
-  },
-  {
-    "name": "RL-77 空爆火箭发射器",
-    "path": "img/helldivers/RL-77 空爆火箭发射器.png",
-    "type": "blue",
-    "backpack": 1
-  },
-  {
-    "name": "A-FLAM-40 火焰喷射哨戒炮",
-    "path": "img/helldivers/A-FLAM-40 火焰喷射哨戒炮.png",
-    "type": "green",
-    "backpack": 0
-  },
-  {
-    "name": "E-AT-12 反坦克炮台",
-    "path": "img/helldivers/E-AT-12 反坦克炮台.png",
-    "type": "green",
-    "backpack": 0
-  },
-  {
-    "name": "M-102 快速侦查载具",
-    "path": "img/helldivers/M-102 快速侦查载具.png",
-    "type": "blue",
-    "backpack": 0
-  },
-  {
-    "name": "SH-51 定向护盾",
-    "path": "img/helldivers/SH-51 定向护盾.png",
-    "type": "blue",
-    "backpack": 1
-  },
-  {
-    "name": "StA-X3 W.A.S.P. 发射器",
-    "path": "img/helldivers/StA-X3 W.A.S.P. 发射器.png",
-    "type": "blue",
-    "backpack": 1
   }
 ]
