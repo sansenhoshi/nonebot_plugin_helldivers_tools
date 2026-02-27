@@ -35,25 +35,24 @@ save_path = os.path.join(basic_path, "temp")
 img_path = os.path.join(basic_path, "img")
 data_path = os.path.join(basic_path, "data")
 
-
 war_situation = on_command("简报", aliases={"简报"})
 
 
-@war_situation.handle()
-async def get_war_info(ev: MessageEvent):
-    await war_situation.send("正在获取前线战况……\n本地化需要30s左右，请民主的等待")
-    url1 = r"https://hd2galaxy.com/"
-    url2 = r"https://helldivers.io/"
-    time_present1 = get_present_time()
-    result = await screen_shot(url1, time_present1)
-    if result != "success":
-        await war_situation.finish(MessageSegment.reply(ev.message_id) + result)
-    img_path1 = os.path.join(save_path, f"{time_present1}.png")
-    logger.info(img_path1)
-    images = gen_ms_img(Image.open(img_path1))
-    mes = (MessageSegment.reply(ev.message_id), images)
-    await war_situation.send(mes)
-    os.remove(img_path1)
+# @war_situation.handle()
+# async def get_war_info(ev: MessageEvent):
+#     await war_situation.send("正在获取前线战况……\n本地化需要30s左右，请民主的等待")
+#     url1 = r"https://hd2galaxy.com/"
+#     url2 = r"https://helldivers.io/"
+#     time_present1 = get_present_time()
+#     result = await screen_shot(url1, time_present1)
+#     if result != "success":
+#         await war_situation.finish(MessageSegment.reply(ev.message_id) + result)
+#     img_path1 = os.path.join(save_path, f"{time_present1}.png")
+#     logger.info(img_path1)
+#     images = gen_ms_img(Image.open(img_path1))
+#     mes = (MessageSegment.reply(ev.message_id), images)
+#     await war_situation.send(mes)
+#     os.remove(img_path1)
 
 
 async def download_url(url: str) -> bytes:
@@ -70,38 +69,51 @@ async def download_url(url: str) -> bytes:
 
 random_helldivers = on_command("随机战备", aliases={"随机战备"}, block=True)
 
-PROMPT = """     ***超级地球武装部***
-   请发送你需要的随机规则
-   
-1：纯随机（不推荐）
+# PROMPT = """     ***超级地球武装部***
+#    请发送你需要的随机规则
+#
+# 1：纯随机（不推荐）
+#
+#    套路随机(按一定规则随机)
+#
+# 2：2红/1蓝/1绿
+# 3：2绿/1红/1蓝
+# 4：2蓝/1绿/1红
+#
+# 5：3红/1蓝
+# 6：3绿/1蓝
+#
+# 7：2红/2蓝
+# 8：2蓝/2绿
+# 9：2绿/2红
+#
+# 10：4红
+# 11：4绿"""
 
-   套路随机(按一定规则随机)
-   
-2：2红/1蓝/1绿
-3：2绿/1红/1蓝
-4：2蓝/1绿/1红
+board_path = img_path + "board.png"
 
-5：3红/1蓝
-6：3绿/1蓝
+PROMPT = MessageSegment.image(pic2b64(Image.open(board_path)))
 
-7：2红/2蓝
-8：2蓝/2绿
-9：2绿/2红
-
-10：4红
-11：4绿"""
 
 @random_helldivers.got("pick_type", prompt=PROMPT)
 
+
+error_count = 0;
+
+
 # 用户选择
 async def got_random_helldivers(event: MessageEvent, pick_type: str = ArgPlainText()):
+    global error_count
     logger.info(f"用户选择的战备类型: {pick_type}")
     if not is_number(pick_type):
+        error_count += 1
         await random_helldivers.reject(f"您输入的 {pick_type} 非数字，请重新输入1到11，或者输入0退出")
     elif int(pick_type) not in range(12):
+        error_count += 1
         await random_helldivers.reject(f"您输入的 {pick_type} 不在范围内，请重新输入1到11，或者输入0退出")
-    elif int(pick_type) == 0:
+    elif int(pick_type) == 0 or errer_count >= 3:
         logger.info("用户选择退出随机战备")
+        error_count = 0
         return
 
     mix_msg = (MessageSegment.reply(event.message_id),)
@@ -134,6 +146,7 @@ async def got_random_helldivers(event: MessageEvent, pick_type: str = ArgPlainTe
 
     await random_helldivers.finish(mix_msg)
 
+
 async def get_random_equipment(count):
     data_config = os.path.join(basic_path, "data")
     with open(data_config + "/equipment.json", "r", encoding="utf-8") as file:
@@ -143,6 +156,7 @@ async def get_random_equipment(count):
     selected_equipment = [data[i] for i in indices]
 
     return create_image(selected_equipment)
+
 
 async def get_equipment_by_combination(type_combination):
     data_config = os.path.join(basic_path, "data")
@@ -155,6 +169,7 @@ async def get_equipment_by_combination(type_combination):
     logger.debug(f"根据组合选择的装备: {selected_equipment}")
     return create_image(selected_equipment)
 
+
 def categorize_equipment_by_type(data):
     equipment_by_type = {}
     for item in data:
@@ -163,6 +178,7 @@ def categorize_equipment_by_type(data):
             equipment_by_type[equip_type] = []
         equipment_by_type[equip_type].append(item)
     return equipment_by_type
+
 
 def select_equipment_by_type(equipment_by_type, type_combination):
     selected_equipment = []
@@ -186,8 +202,10 @@ def select_equipment_by_type(equipment_by_type, type_combination):
 
     return selected_equipment
 
+
 def select_random_equipment(max_equipment, count):
     return random.sample(range(max_equipment), count)
+
 
 def create_image(selected_equipment):
     new_img = Image.new('RGBA', (800, 500), (0, 0, 0, 1000))
@@ -213,12 +231,14 @@ def create_image(selected_equipment):
     new_img.save(b_io, format="PNG")
     return b_io
 
+
 def image_paste(paste_image, under_image, pos):
     if paste_image.mode == 'RGBA':
         under_image.paste(paste_image, pos, mask=paste_image.split()[3])
     else:
         under_image.paste(paste_image, pos)
     return under_image
+
 
 def is_number(s):
     return bool(re.match(r'^[0-9]+$', s))
