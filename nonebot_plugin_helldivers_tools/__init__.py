@@ -90,20 +90,20 @@ random_helldivers = on_command("随机战备", aliases={"随机战备"}, block=T
 # 10：4红
 # 11：4绿"""
 
-board_path = img_path + "board.png"
+board_path = f"{img_path}/board.png"
 
 PROMPT = MessageSegment.image(pic2b64(Image.open(board_path)))
 
-
-@random_helldivers.got("pick_type", prompt=PROMPT)
-
-
-error_count = 0;
-
-
+error_count = 0
 # 用户选择
+@random_helldivers.got("pick_type", prompt=PROMPT)
 async def got_random_helldivers(event: MessageEvent, pick_type: str = ArgPlainText()):
     global error_count
+    if error_count >= 2:
+        logger.info("持续输错退出随机战备")
+        error_count = 0
+        await random_helldivers.finish("已回归平民生活——")
+        return
     logger.info(f"用户选择的战备类型: {pick_type}")
     if not is_number(pick_type):
         error_count += 1
@@ -111,9 +111,10 @@ async def got_random_helldivers(event: MessageEvent, pick_type: str = ArgPlainTe
     elif int(pick_type) not in range(12):
         error_count += 1
         await random_helldivers.reject(f"您输入的 {pick_type} 不在范围内，请重新输入1到11，或者输入0退出")
-    elif int(pick_type) == 0 or errer_count >= 3:
+    elif int(pick_type) == 0:
         logger.info("用户选择退出随机战备")
         error_count = 0
+        await random_helldivers.finish("已回归平民生活——")
         return
 
     mix_msg = (MessageSegment.reply(event.message_id),)
