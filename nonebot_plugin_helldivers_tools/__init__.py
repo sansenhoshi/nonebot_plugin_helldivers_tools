@@ -8,7 +8,7 @@ from nonebot.adapters.onebot.v11 import MessageEvent, Bot, MessageSegment
 from nonebot.plugin import PluginMetadata
 from typing import Optional, Union
 
-from equipment import get_random_equipment, get_equipment_by_combination
+from .equipment import get_random_equipment, get_equipment_by_combination
 from .utils import *
 from nonebot.matcher import Matcher
 
