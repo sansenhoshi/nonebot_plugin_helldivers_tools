@@ -1,7 +1,7 @@
 import json
 import os
 import random
-from image_builder import create_image
+from .image_builder import create_image
 
 
 basic_path = os.path.dirname(__file__)

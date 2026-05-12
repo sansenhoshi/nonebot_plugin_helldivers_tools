@@ -3,7 +3,6 @@ import random
 from io import BytesIO
 from datetime import datetime
 from PIL import Image, ImageOps, ImageDraw, ImageFont
-from image_utils import image_paste
 
 basic_path = os.path.dirname(__file__)
 save_path = os.path.join(basic_path, "temp")
@@ -36,3 +35,11 @@ def create_image(selected_equipment):
     new_img = ImageOps.expand(new_img, border=10, fill="white")
     new_img.save(b_io, format="PNG")
     return b_io
+
+
+def image_paste(paste_image, under_image, pos):
+    if paste_image.mode == 'RGBA':
+        under_image.paste(paste_image, pos, mask=paste_image.split()[3])
+    else:
+        under_image.paste(paste_image, pos)
+    return under_image
