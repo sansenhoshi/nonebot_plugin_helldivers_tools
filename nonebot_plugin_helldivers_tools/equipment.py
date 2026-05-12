@@ -1,6 +1,7 @@
 import json
 import os
 import random
+from nonebot import logger
 from .image_builder import create_image
 
 
